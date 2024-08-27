@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es-DR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <title>Encriptador</title>
+</head>
+<header class="encabezado"><!--aqui va el logo-->
+    <img  class="logo" src="./img/logoAlura.png" alt="logo">
+</header>
+<body>
+    <main class="contenido">
+    
+    <div class="presentacion__contenido">
+        <section class="area__escritura"> <!--aqui se escribe y encripta/desencripta-->
+         <div class="area__entrada">
+            <textarea class="caja__texto" id="cajaTexto" placeholder="Introduce el texto aquí" ></textarea>
+
+            <div class="alerta__botones">
+
+            <div class="mensaje__alerta">
+             <img class="icono__alerta" src="./img/alerta.png" alt="icono de alerta">
+             <p id="alerta">Solo letras minúsculas sin acentos ni signos</p>
+           </div>
+           
+           <div class="botones">
+             <button onclick="encriptar();" class="boton encriptar"> Encriptar </button>
+             <button onclick="desencriptar();" class="boton desencriptar">Desencriptar</button>
+           </div>
+
+           </div>
+
+         </div>
+           
+        </section>
+
+        <section  class="area__salida"> <!--aqui aparece el texto encriptado/desencriptado-->
+            <div id="areaSalida">
+
+            <div id="contenidoSalida" class="contenidoSalida">
+
+            <textarea  readonly="readonly" class="textoSalida" id="textoSalida"></textarea><!--aparece el texto para copiar en esta zona-->
+
+            <img id="imagen" class="imagen__principal" src="./img/imagenPrincipal.png" alt="imagen mostrando que aun no se encriptó/desencriptó nada">
+            </div>
+            <p id="mensaje1" class="mensaje salida1">Ningún mensaje fue encontrado</p>
+            <p id="mensaje2" class="mensaje salida2">Ingresa el texto que desees encriptar o desencriptar</p>
+
+            </div>
+           <button id="copiar" class="copiar" onclick = copiar(); >Copiar</button>
+           
+        </section>
+
+    </div>
+
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+* {
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   font-family: var(--fuuente-principal);
+    
+}
+
+body {
+    background-color: var(--color-primario);
+
+}
+
+:root {
+    /*color*/
+    --color-primario:#F3F5FC;
+    --color-secundario:#ffffff;
+    --color-terciario:#0A3871;
+
+    /*fuente*/
+    --fuuente-principal:inter;
+}
+
+.encabezado {
+    background:none;
+    
+}
+
+.logo {
+    margin-top: 3px ;
+    width: 120px;
+    height: 48px;
+}
+
+.presentacion__contenido {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 80px;
+}
+
+.area__escritura {
+    margin-top: 70px;
+    height: 450px;
+    width: 50%;
+}
+.caja__texto {
+    width: 100%;
+    height: 369px;
+    font-family: inter;
+    outline: none;
+    border: none;
+    scrollbar-width: none;
+    font-size: 1.10rem;
+    background-color: var(--color-primario);
+    resize: none;
+}
+
+.alerta__botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    gap: 1px;
+
+    
+}
+
+.mensaje__alerta {
+    display: flex;
+    align-items: center;
+    font-size: 0.5rem;
+    gap: 1px;
+    font-family: inter;
+    padding-right: 67%;
+    padding-bottom: 5px;
+    width: max-content;
+}
+
+.icono__alerta {
+    position: sticky;
+    height: 14px;
+    width: auto;
+    
+}
+
+.botones {
+    display: flex;
+    gap: 24px;
+   
+    
+}
+
+.boton {
+    gap: 30px;
+    width: 300px;
+    border-radius: 20px;
+    border: solid 1px var(--color-terciario);
+    color: var(--color-terciario);
+    height: 49px;
+}
+
+.encriptar {
+    background-color: var(--color-terciario);
+    color: var(--color-secundario);
+}
+
+.desencriptar {
+    background-color: var(--color-primario);
+}
+
+
+
+
+
+
+
+
+
+/*Area de salida*/
+
+.area__salida {
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    width: 270px;
+    height: 558px;
+    border-radius: 1.5rem;
+    box-shadow: 0px 1px 1px ;
+    background-color: var(--color-secundario);
+    
+    
+}
+
+
+.textoSalida {
+    
+    margin-top: 10%;
+    max-width: auto;
+    height: 335px;
+    resize: none;
+    scrollbar-width: none;
+    outline: none;
+    border: none;
+    font-size: 1.10rem;
+    
+}
+
+.imagen__principal {
+    width: 200px;
+    height: auto;
+    padding-right: 8%;
+}
+
+.mensaje {
+    margin: 1rem;
+    font-family: inter;
+}
+.salida1 {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.salida2 {
+    font-size: .7rem;
+}
+
+.contenidoSalida {
+    margin-left: 15%;
+ 
+}
+
+.copiar {
+
+    width: 240px;
+    border-radius: 20px;
+    height: 49px;
+    margin-top: 10%;
+    font-family: var(--fuuente-principal);
+    border-color: var(--color-terciario);
+    background-color: var(--color-secundario);
+    margin-bottom: 5%;
+    margin-top: 25%;
+    border: solid 1px var(--color-terciario);
+    margin-left: 5%;
+
+
+
+}
+
+.contenidoSalida {
+   margin-left: 15%;
+
+}
+
+
+/*Diseño responsivo*/
+
+@media (max-width:768px) {
+    .presentacion__contenido{
+
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+    }
+    .area__escritura {
+        width: auto;
+        height: auto;
+    }
+
+    .area__salida {
+        width: 90%;
+        height: 20%;
+        margin-bottom:2%;
+    }
+    
+    .textoSalida {
+        text-align: center;
+        width: 90%;
+        height: 100%;
+    }
+
+    .imagen__principal {
+        display: none;
+    }
+    
+    .contenidoSalida {
+        margin-left: 10%;
+    }
+
+    .copiar {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        width: 90%;
+    }
+}
+
+@media (max-width:426px) {
+
+     .presentacion__contenido{
+
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+    }
+    .area__escritura {
+        width: auto;
+        height: auto;
+    }
+
+    .area__salida {
+        width: 80%;
+        height: 10%;
+        margin-bottom:2%;
+        resize: auto;
+    }
+
+    .imagen__principal {
+        display: none;
+    }
+
+    .botones {
+        flex-direction: column;
+        
+    }
+
+    .mensaje__alerta {
+       width: max-content;
+       padding-left: 40%;
+       gap: 2px;
+        
+    }
+
+    .copiar {
+        margin-top: 2%;
+        margin-bottom: 3%;
+        width: 90%;
+    }
+    
+}

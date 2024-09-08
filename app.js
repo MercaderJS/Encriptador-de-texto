@@ -1,9 +1,15 @@
 
-function ocultarTextoCopiar() {  //oculta el texto encriptado/desencriptado y el boton de copiar
+function ocultarTextoCopiar() {  //oculta el texto encriptado/desencriptado y el boton de copiar y muestra la imagen y texto
+                                //por defecto
    document.getElementById('textoSalida').style.display = 'none';
    document.getElementById('copiar').style.display = 'none';
+   document.getElementById('imagen').style.display = 'block';
+   document.getElementById('mensaje1').style.display = 'block';
+   document.getElementById('mensaje2').style.display = 'block';
 
 }
+
+
 
 function mostrarTextoCopiar() {  //oculta la imagen y el texto por defecto
     document.getElementById('textoSalida').style.display = 'block';
@@ -12,26 +18,37 @@ function mostrarTextoCopiar() {  //oculta la imagen y el texto por defecto
     document.getElementById('mensaje1').style.display = 'none';
     document.getElementById('mensaje2').style.display = 'none';
 
+
 }
 
 function encriptar(){  //encripta el texto del textarea del area de escritura y hace 
-                       //que se detenga la ejecucion si hay algun caracter o no permitido en el textarea
+                       //que se detenga la ejecucion si se ingresó un caracter no permitido o no se haya introducido nada
  
-    let entradaTexto = document.getElementById('cajaTexto').value;
+    let entradaTexto = document.getElementById('cajaTexto').value.trim();
     let salida = document.getElementById('textoSalida');
     let error = caracterNoPermitido(entradaTexto);
-    let nuevoTexto = salida.innerHTML = cambiarVocal(entradaTexto);
     ocultarTextoCopiar();
-   
-    if (error || entradaTexto === '') {
-        ocultarTextoCopiar();
-        return;
+
+    if (entradaTexto === '') {
         
-    } else if (salida.innerHTML = cambiarVocal(entradaTexto)) {
-        nuevoTexto;
+        return;
+
+    } else if (error) {
+        
+        return error;
+
+    } else {
+       
         mostrarTextoCopiar();
+        salida.innerHTML = cambiarVocal(entradaTexto);
+
     }
-    
+
+   
+
+
+      
+
   
 }
 
@@ -54,7 +71,9 @@ function caracterNoPermitido(a)  {
     let mayusculas = /[A-Z]/g.test(a);
     let acentos = /[áéíóúÁÉÍÓÚñÑ]/g.test(a);
     let caracterEspecial = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿]/g.test(a);
-    let textoVacio = / /.test(a);// reparar busqueda en string para caracter vacío en proxima actualizacion.
+   
+   
+
     
     if (mayusculas) {
 
@@ -62,7 +81,6 @@ function caracterNoPermitido(a)  {
         alertaMayuscula.style.color = 'red';
         return alertaMayuscula.innerHTML = 'No se aceptan letras mayúsculas';
     
-
     } else if (acentos) {
 
         let alertaAcentos = document.getElementById('alerta');
@@ -75,28 +93,21 @@ function caracterNoPermitido(a)  {
         alertaCharEspecial.style.color = 'red';
         return alertaCharEspecial.innerHTML = ('No se aceptan caracteres especiales');
 
-    }/* else if (textoVacio) { 
-
-        
-        let alertaTextoVacio = document.getElementById('alerta');
-        alertaTextoVacio.style.color = 'red';
-        return alertaTextoVacio.innerHTML = ('No se encontró ningún texto');
-
-    }*/
-
-
-
+    } 
 }                       
 
 function desencriptar() { //toma el texto que se introdujo y lo coloca en el area de salida listo para copiar
-    let entradaTexto = document.getElementById('cajaTexto').value;
+    let entradaTexto = document.getElementById('cajaTexto').value.trim();
     let textoparaCopiar = document.getElementById('textoSalida');
     let error = caracterNoPermitido(entradaTexto);
     
 
     if (entradaTexto === '') {
+
         return;
+
     } else if (error) {
+
         return error;
     } 
 
@@ -104,6 +115,7 @@ function desencriptar() { //toma el texto que se introdujo y lo coloca en el are
 }
 
 function copiar() {// toma el texto de la salida 
+
     let salidaTexto = document.getElementById('textoSalida').value;
     navigator.clipboard.readText(salidaTexto);
     navigator.clipboard.writeText(salidaTexto);

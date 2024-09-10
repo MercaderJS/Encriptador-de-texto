@@ -3,13 +3,7 @@ function ocultarTextoCopiar() {  //oculta el texto encriptado/desencriptado y el
                                 //por defecto
    document.getElementById('textoSalida').style.display = 'none';
    document.getElementById('copiar').style.display = 'none';
-   document.getElementById('imagen').style.display = 'block';
-   document.getElementById('mensaje1').style.display = 'block';
-   document.getElementById('mensaje2').style.display = 'block';
-
 }
-
-
 
 function mostrarTextoCopiar() {  //oculta la imagen y el texto por defecto
     document.getElementById('textoSalida').style.display = 'block';
@@ -27,29 +21,29 @@ function encriptar(){  //encripta el texto del textarea del area de escritura y 
     let entradaTexto = document.getElementById('cajaTexto').value.trim();
     let salida = document.getElementById('textoSalida');
     let error = caracterNoPermitido(entradaTexto);
-    ocultarTextoCopiar();
+    let alerta = document.getElementById('alerta');
+    
+
 
     if (entradaTexto === '') {
-        
+        ocultarTextoCopiar();
         return;
 
     } else if (error) {
-        
-        return error;
+
+        ocultarTextoCopiar();
+        error;
+        return;
 
     } else {
-       
+        
         mostrarTextoCopiar();
         salida.innerHTML = cambiarVocal(entradaTexto);
+        alerta.style.color = 'black';
+        alerta.innerHTML = 'Solo letras minúsculas sin acentos ni signos';
 
     }
 
-   
-
-
-      
-
-  
 }
 
 function cambiarVocal(a) { 
@@ -61,10 +55,7 @@ function cambiarVocal(a) {
          return a = a.replace(/#1#/g,'ai').replace(/#2#/g,'enter').replace(/#3#/g,'imes')
         .replace(/#4#/g,'ober').replace(/#5#/g,'ufat');
 
-    
-    
 }
-
 
 //cambia la alerta y color indicando al usuario si coloco un caracter no permitido
 function caracterNoPermitido(a)  {
@@ -72,8 +63,6 @@ function caracterNoPermitido(a)  {
     let acentos = /[áéíóúÁÉÍÓÚñÑ]/g.test(a);
     let caracterEspecial = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿]/g.test(a);
    
-   
-
     
     if (mayusculas) {
 
@@ -93,7 +82,7 @@ function caracterNoPermitido(a)  {
         alertaCharEspecial.style.color = 'red';
         return alertaCharEspecial.innerHTML = ('No se aceptan caracteres especiales');
 
-    } 
+    }
 }                       
 
 function desencriptar() { //toma el texto que se introdujo y lo coloca en el area de salida listo para copiar
